@@ -16,5 +16,8 @@
   "homepage": "https://bitbucket.org/taoxm/component#readme",
   "dependencies": {
     "vue": "^2.5.17"
+  },
+  "devDependencies": {
+    "http-server": "^0.11.1"
   }
 }
