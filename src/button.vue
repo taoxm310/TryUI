@@ -2,7 +2,9 @@
   <button class="m-button" @click="$emit('click')" :class="{[`icon-${iconPosition}`]:true}">
     <m-icon v-if="loading" name="loading" class="spin"></m-icon>
     <m-icon v-if="icon && !loading" :name="icon"></m-icon>
-    <slot></slot>
+    <div class="content">
+      <slot></slot>
+    </div>
   </button>
 </template>
 <script>
@@ -46,14 +48,23 @@ export default {
     outline: none;
   }
   > .m-icon {
-    margin-right:.3em;
+    margin-right: 0.3em;
+    order: 1;
+  }
+  > .content {
+    order: 2;
   }
   .spin {
     animation: spin 1s infinite linear;
   }
   &.icon-left {
     > .m-icon {
-      order:2;
+      order: 2;
+      margin-right: 0;
+      margin-left: 0.3em;
+    }
+    > .content {
+      order: 1;
     }
   }
 }
