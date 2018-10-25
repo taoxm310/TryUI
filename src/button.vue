@@ -1,5 +1,5 @@
 <template>
-  <button class="m-button">
+  <button class="m-button" @click="$emit('click')">
     <m-icon v-if="loading" name="loading" class="spin"></m-icon>
     <m-icon v-if="icon && !loading" :name="icon"></m-icon>
     <slot></slot>
