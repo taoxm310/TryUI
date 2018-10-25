@@ -15,7 +15,11 @@ export default {
   components: {
     'm-icon': Icon
   },
-  props: ['icon', 'loading', 'iconPosition'] //iconPosition 在文字左边还是右边
+  props: {
+    icon: {},
+    loading: {},
+    iconPosition: { type: String, default: 'left' }//iconPosition 在文字左边还是右边
+  }
 }
 </script>
 <style lang="scss">
