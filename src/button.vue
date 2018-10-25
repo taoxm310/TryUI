@@ -10,19 +10,19 @@ import Icon from './icon'
 
 export default {
   name: 'm-button',
-  components:{
-    'm-icon':Icon
+  components: {
+    'm-icon': Icon
   },
-  props:['icon', 'loading']
+  props: ['icon', 'loading']
 }
 </script>
 <style lang="scss">
 @keyframes spin {
   0% {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg)
+    transform: rotate(360deg);
   }
 }
 
@@ -43,7 +43,7 @@ export default {
     outline: none;
   }
   .spin {
-    animation:spin 1s infinite linear;
+    animation: spin 1s infinite linear;
   }
 }
 </style>
