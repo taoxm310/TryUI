@@ -1,7 +1,7 @@
 <template>
   <button class="m-button">
-    <m-icon name="loading" class="spin"></m-icon>
-    <m-icon v-if="icon" :name="icon"></m-icon>
+    <m-icon v-if="loading" name="loading" class="spin"></m-icon>
+    <m-icon v-if="icon && !loading" :name="icon"></m-icon>
     <slot></slot>
   </button>
 </template>
@@ -13,7 +13,7 @@ export default {
   components:{
     'm-icon':Icon
   },
-  props:['icon']
+  props:['icon', 'loading']
 }
 </script>
 <style lang="scss">
