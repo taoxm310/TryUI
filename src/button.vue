@@ -1,5 +1,6 @@
 <template>
   <button class="m-button">
+    <m-icon name="loading" class="spin"></m-icon>
     <m-icon v-if="icon" :name="icon"></m-icon>
     <slot></slot>
   </button>
@@ -16,6 +17,15 @@ export default {
 }
 </script>
 <style lang="scss">
+@keyframes spin {
+  0% {
+    transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
 .m-button {
   height: var(--button-height);
   padding: 0 1em;
@@ -31,6 +41,9 @@ export default {
   }
   &:focus {
     outline: none;
+  }
+  .spin {
+    animation:spin 1s infinite linear;
   }
 }
 </style>
