@@ -1,11 +1,18 @@
 <template>
   <button class="m-button">
+    <m-icon v-if="icon" :name="icon"></m-icon>
     <slot></slot>
   </button>
 </template>
 <script>
+import Icon from './icon'
+
 export default {
-  name: 'm-button'
+  name: 'm-button',
+  components:{
+    'm-icon':Icon
+  },
+  props:['icon']
 }
 </script>
 <style lang="scss">
