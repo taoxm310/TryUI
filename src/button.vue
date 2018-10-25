@@ -1,5 +1,5 @@
 <template>
-  <button class="m-button" @click="$emit('click')">
+  <button class="m-button" @click="$emit('click')" :class="{[`icon-${iconPosition}`]:true}">
     <m-icon v-if="loading" name="loading" class="spin"></m-icon>
     <m-icon v-if="icon && !loading" :name="icon"></m-icon>
     <slot></slot>
@@ -13,7 +13,7 @@ export default {
   components: {
     'm-icon': Icon
   },
-  props: ['icon', 'loading']
+  props: ['icon', 'loading', 'iconPosition'] //iconPosition 在文字左边还是右边
 }
 </script>
 <style lang="scss">
@@ -33,6 +33,9 @@ export default {
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
   background-color: var(--button-bg);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   &:hover {
     border-color: var(--border-color-hover);
   }
@@ -42,8 +45,16 @@ export default {
   &:focus {
     outline: none;
   }
+  > .m-icon {
+    margin-right:.3em;
+  }
   .spin {
     animation: spin 1s infinite linear;
+  }
+  &.icon-left {
+    > .m-icon {
+      order:2;
+    }
   }
 }
 </style>
