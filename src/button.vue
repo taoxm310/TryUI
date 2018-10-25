@@ -18,7 +18,7 @@ export default {
   props: {
     icon: {},
     loading: {},
-    iconPosition: { type: String, default: 'left' }//iconPosition 在文字左边还是右边
+    iconPosition: { type: String, default: 'left' } //iconPosition 在文字左边还是右边
   }
 }
 </script>
