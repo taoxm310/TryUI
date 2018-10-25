@@ -14,9 +14,9 @@ export default {
     vertical-align: middle;
     >.m-button {
       border-radius: 0;
-      border-left: none;
+      margin-left:-1px;
       &:first-child {
-        border-left: 1px solid var(--border-color);
+        margin-left:0;
         border-top-left-radius:var(--border-radius);
         border-bottom-left-radius: var(--border-radius);
       }
