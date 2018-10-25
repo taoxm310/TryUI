@@ -29,6 +29,7 @@ export default {
 }
 
 .m-button {
+  vertical-align: middle;
   height: var(--button-height);
   padding: 0 1em;
   font: inherit;
