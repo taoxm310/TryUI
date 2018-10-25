@@ -58,7 +58,7 @@ export default {
   .spin {
     animation: spin 1s infinite linear;
   }
-  &.icon-left {
+  &.icon-right {
     > .m-icon {
       order: 2;
       margin-right: 0;
