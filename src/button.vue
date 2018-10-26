@@ -1,8 +1,8 @@
 <template>
   <button class="m-button" @click="$emit('click')" :class="{[`icon-${iconPosition}`]:true}">
-    <m-icon v-if="loading" name="loading" class="spin"></m-icon>
-    <m-icon v-if="icon && !loading" :name="icon"></m-icon>
-    <div class="content">
+    <m-icon class="icon loading" v-if="loading" name="loading"></m-icon>
+    <m-icon class="icon" v-if="icon && !loading" :name="icon"></m-icon>
+    <div class="m-button-content">
       <slot></slot>
     </div>
   </button>
@@ -17,8 +17,13 @@ export default {
   },
   props: {
     icon: {},
-    loading: {},
-    iconPosition: { type: String, default: 'left' } //iconPosition 在文字左边还是右边
+    loading: {
+      type:Boolean,
+      default: false
+    },
+    iconPosition: { type: String, default: 'left',validator:(value) => {
+      return value === 'left' || value === 'right'
+    } } //iconPosition 在文字左边还是右边
   }
 }
 </script>
@@ -52,25 +57,27 @@ export default {
   &:focus {
     outline: none;
   }
-  > .m-icon {
-    margin-right: 0.3em;
+  > .icon {
+    margin-right: .1em;
     order: 1;
   }
-  > .content {
+  > .m-button-content {
     order: 2;
   }
-  .spin {
-    animation: spin 1s infinite linear;
-  }
+
+
   &.icon-right {
-    > .m-icon {
+    > .icon {
       order: 2;
       margin-right: 0;
-      margin-left: 0.3em;
+      margin-left: .1em;
     }
-    > .content {
+    > .m-button-content {
       order: 1;
     }
+  }
+    .loading {
+    animation: spin 1s infinite linear;
   }
 }
 </style>
