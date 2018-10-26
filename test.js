@@ -1,4 +1,5 @@
-const puppeteer = require('puppeteer')(async () => {
+const puppeteer = require('puppeteer')
+;(async () => {
   const browser = await puppeteer.launch({ headless: false })
   const page = await browser.newPage()
   await page.setRequestInterception(true)
@@ -9,7 +10,7 @@ const puppeteer = require('puppeteer')(async () => {
   })
   page.on('load', async () => {
     const errors = await page.evaluate(() => {
-      return window.errors || {}
+      return window.errors || []
     })
     if (errors.length === 0) {
       console.info('没有错误')
@@ -22,4 +23,4 @@ const puppeteer = require('puppeteer')(async () => {
     await browser.close()
   })
   await page.goto('http://127.0.0.1:1234')
-})
+})()
