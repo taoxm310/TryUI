@@ -4,6 +4,7 @@ import ButtonGroup from './button-group.vue'
 
 import chai from 'chai'
 import spies from 'chai-spies'
+chai.use(spies)
 const expect = chai.expect
 
 Vue.component('m-button', Button)
@@ -51,7 +52,7 @@ const vm = new Vue({
     propsData: {
       icon: 'loading'
     }
-  })
+  }).$mount(div)
   const icon = vm.$el.querySelector('svg')
   expect(window.getComputedStyle(icon).order).to.equal('1')
   vm.$el.remove()
