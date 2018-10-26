@@ -18,12 +18,16 @@ export default {
   props: {
     icon: {},
     loading: {
-      type:Boolean,
+      type: Boolean,
       default: false
     },
-    iconPosition: { type: String, default: 'left',validator:(value) => {
-      return value === 'left' || value === 'right'
-    } } //iconPosition 在文字左边还是右边
+    iconPosition: {
+      type: String,
+      default: 'left',
+      validator: value => {
+        return value === 'left' || value === 'right'
+      }
+    } //iconPosition 在文字左边还是右边
   }
 }
 </script>
@@ -58,25 +62,24 @@ export default {
     outline: none;
   }
   > .icon {
-    margin-right: .1em;
+    margin-right: 0.1em;
     order: 1;
   }
   > .m-button-content {
     order: 2;
   }
 
-
   &.icon-right {
     > .icon {
       order: 2;
       margin-right: 0;
-      margin-left: .1em;
+      margin-left: 0.1em;
     }
     > .m-button-content {
       order: 1;
     }
   }
-    .loading {
+  .loading {
     animation: spin 1s infinite linear;
   }
 }
