@@ -46,12 +46,12 @@ const vm = new Vue({
 {
   const div = document.createElement('div')
   document.body.appendChild(div)
-  const Constructor = Vue.extend('Button')
+  const Constructor = Vue.extend(Button)
   const vm = new Constructor({
     propsData:{
       icon:'loading'
     }
-  }).$mount(div)
+  })
   const icon = vm.$el.querySelector('svg')
   expect(window.getComputedStyle(icon).order).to.equal('1')
   vm.$el.remove()
@@ -61,7 +61,7 @@ const vm = new Vue({
 {
   const div = document.createElement('div')
   document.body.appendChild(div)
-  const Constructor = Vue.extend('Button')
+  const Constructor = Vue.extend(Button)
   const vm = new Constructor({
     propsData:{
       icon:'loading',
