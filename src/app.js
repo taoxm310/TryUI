@@ -19,8 +19,8 @@ const vm = new Vue({
 {
   const Constructor = Vue.extend(Button)
   const vm = new Constructor({
-    propsData:{
-      icon:'download'
+    propsData: {
+      icon: 'download'
     }
   }).$mount()
 
@@ -32,9 +32,9 @@ const vm = new Vue({
 {
   const Constructor = Vue.extend(Button)
   const vm = new Constructor({
-    propsData:{
-      icon:'download',
-      loading:true
+    propsData: {
+      icon: 'download',
+      loading: true
     }
   }).$mount()
 
@@ -48,8 +48,8 @@ const vm = new Vue({
   document.body.appendChild(div)
   const Constructor = Vue.extend(Button)
   const vm = new Constructor({
-    propsData:{
-      icon:'loading'
+    propsData: {
+      icon: 'loading'
     }
   })
   const icon = vm.$el.querySelector('svg')
@@ -63,9 +63,9 @@ const vm = new Vue({
   document.body.appendChild(div)
   const Constructor = Vue.extend(Button)
   const vm = new Constructor({
-    propsData:{
-      icon:'loading',
-      iconPosition:'right'
+    propsData: {
+      icon: 'loading',
+      iconPosition: 'right'
     }
   }).$mount(div)
   const icon = vm.$el.querySelector('svg')
@@ -77,12 +77,12 @@ const vm = new Vue({
 {
   const Constructor = Vue.extend(Button)
   const vm = new Constructor({
-    propsData:{
-      icon:'download',
-      loading:true
+    propsData: {
+      icon: 'download',
+      loading: true
     }
   }).$mount()
-  let spy = chai.spy(function(){})
+  let spy = chai.spy(function() {})
   vm.$on('click', spy)
   let button = vm.$el
   button.click()
