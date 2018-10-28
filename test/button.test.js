@@ -1,24 +1,16 @@
-import Vue from 'vue'
-import Button from './button.vue'
-import ButtonGroup from './button-group.vue'
-
-import chai from 'chai'
-import spies from 'chai-spies'
-chai.use(spies)
 const expect = chai.expect
 
-Vue.component('m-button', Button)
-Vue.component('m-button-group', ButtonGroup)
-const vm = new Vue({
-  el: '#app',
-  data: {
-    loading1: false,
-    loading2: true
-  }
-})
+import Vue from 'vue'
+import Button from '../src/button'
 
-try {
-  {
+Vue.config.productionTip = false
+Vue.config.devtools = false
+describe('Button', () => {
+  it('存在', () => {
+    expect(Button).to.exist
+  })
+
+  it('可以设置 icon ', () => {
     const Constructor = Vue.extend(Button)
     const vm = new Constructor({
       propsData: {
@@ -29,9 +21,9 @@ try {
     const useElement = vm.$el.querySelector('use')
     expect(useElement.getAttribute('xlink:href')).to.equal('#i-download')
     vm.$destroy()
-  }
+  })
 
-  {
+  it('可以设置 loading ', () => {
     const Constructor = Vue.extend(Button)
     const vm = new Constructor({
       propsData: {
@@ -43,9 +35,9 @@ try {
     const useElement = vm.$el.querySelector('use')
     expect(useElement.getAttribute('xlink:href')).to.equal('#i-loading')
     vm.$destroy()
-  }
+  })
 
-  {
+  it('icon 默认的 order 是 1', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
     const Constructor = Vue.extend(Button)
@@ -58,9 +50,9 @@ try {
     expect(window.getComputedStyle(icon).order).to.equal('1')
     vm.$el.remove()
     vm.$destroy()
-  }
+  })
 
-  {
+  it('设置 iconPosition 可以改变 order ', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
     const Constructor = Vue.extend(Button)
@@ -74,9 +66,9 @@ try {
     expect(window.getComputedStyle(icon).order).to.equal('2')
     vm.$el.remove()
     vm.$destroy()
-  }
+  })
 
-  {
+  it('点击 button 触发 click 事件', () => {
     const Constructor = Vue.extend(Button)
     const vm = new Constructor({
       propsData: {
@@ -84,17 +76,10 @@ try {
         loading: true
       }
     }).$mount()
-    let spy = chai.spy(function() {})
-    vm.$on('click', spy)
+    const callback = sinon.fake()
+    vm.$on('click', callback)
     let button = vm.$el
     button.click()
-    expect(spy).to.have.been.called()
-  }
-} catch (error) {
-  window.errors = [error]
-} finally {
-  window.errors &&
-    window.errors.forEach(error => {
-      console.error(error.message)
-    })
-}
+    expect(callback).to.have.been.called
+  })
+})
