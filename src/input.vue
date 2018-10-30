@@ -6,10 +6,10 @@
       class="m-input"
       :disabled="disabled"
       :readonly="readonly"
-      @change="$emit('change')"
-      @blur="$emit('blur')"
-      @focus="$emit('focus')"
-      @input="$emit('input')"
+      @change="$emit('change',$event.target.value)"
+      @blur="$emit('blur',$event.target.value)"
+      @focus="$emit('focus',$event.target.value)"
+      @input="$emit('input',$event.target.value)"
     >
     <template v-if="error">
       <Icon name="error" class="error-icon"></Icon>
