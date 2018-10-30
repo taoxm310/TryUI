@@ -1,7 +1,7 @@
 const expect = chai.expect
 
 import Vue from 'vue'
-import Input from '../src/input'
+import Input from '../src/input.vue'
 
 Vue.config.productionTip = false
 Vue.config.devtools = false
@@ -17,7 +17,7 @@ describe('props', () => {
   afterEach(() => vm.$destroy())
 
   it('接受value ', () => {
-    const vm = new Constructor({
+    vm = new Constructor({
       propsData: {
         value: 'download'
       }
@@ -46,7 +46,7 @@ describe('props', () => {
       }
     }).$mount()
     const inputElement = vm.$el.querySelector('input')
-    expect(inputElement.readonly).to.equal(true)
+    expect(inputElement.readOnly).to.equal(true)
   })
 
   it('接受error', () => {
@@ -56,7 +56,7 @@ describe('props', () => {
       }
     }).$mount()
     const useElement = vm.$el.querySelector('use')
-    expect(userElement.getAttribute('xlink:href')).to.equal('#i-error')
+    expect(useElement.getAttribute('xlink:href')).to.equal('#i-error')
     const errorMessage = vm.$el.querySelector('.error-message')
     expect(errorMessage.innerText).to.equal('this is an error')
   })
@@ -78,7 +78,7 @@ describe('事件', () => {
       let event = new Event(eventName)
       let input = vm.$el.querySelector('input')
       input.dispatchEvent(event)
-      expect(callback).to.have.been.calledWith(event)
+      expect(callback).to.have.been.called
     })
   })
 })
