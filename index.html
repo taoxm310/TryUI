@@ -17,12 +17,7 @@
 <body>
   <div id="app">
     <div class="box">
-      <m-input value="bb" disabled></m-input>
-      <m-input value="cc" readonly></m-input>
-      <m-input value="dd"></m-input>
-    </div>
-    <div class="box">
-      <m-input value="cc" error="不能少于3个字"></m-input>
+      <m-input value="王" @change="inputChange"></m-input>
     </div>
     <div class="box">
       <m-button :loading="loading1" @click="loading1 = !loading1">按钮</m-button>
