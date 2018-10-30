@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Button from './button.vue'
 import ButtonGroup from './button-group.vue'
 import Input from './input.vue'
+import Row from './row.vue'
+import Col from './col.vue'
 
 import chai from 'chai'
 import spies from 'chai-spies'
@@ -11,6 +13,9 @@ const expect = chai.expect
 Vue.component('m-button', Button)
 Vue.component('m-button-group', ButtonGroup)
 Vue.component('m-input', Input)
+Vue.component('m-row', Row)
+Vue.component('m-col', Col)
+
 const vm = new Vue({
   el: '#app',
   data: {
