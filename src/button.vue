@@ -1,5 +1,5 @@
 <template>
-  <button class="m-button" @click="$emit('click')" :class="{[`icon-${iconPosition}`]:true}">
+  <button class="m-button" @click="$emit('click',$event)" :class="{[`icon-${iconPosition}`]:true}">
     <m-icon class="icon loading" v-if="loading" name="loading"></m-icon>
     <m-icon class="icon" v-if="icon && !loading" :name="icon"></m-icon>
     <div class="m-button-content">
