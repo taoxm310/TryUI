@@ -1,8 +1,6 @@
 <template>
   <div class="m-col" :class="classList" :style="style">
-    <div style="height:100px; border:1px solid red;">
-      <slot></slot>
-    </div>
+    <slot></slot>
   </div>
 </template>
 
@@ -22,16 +20,10 @@ export default {
       gutter: 0
     }
   },
-  created() {
-    console.log('col created')
-  },
-  mounted() {
-    console.log('col mounted')
-  },
   computed: {
     classList() {
       let list = []
-      ;[('span', 'offset')].forEach(prop => {
+      ;['span', 'offset'].forEach(prop => {
         if (this[prop] || this[prop] === 0) {
           list.push(
             prop !== 'span'
@@ -48,7 +40,6 @@ export default {
         result.paddingLeft = `${this.gutter / 2}px`
         result.paddingRight = result.paddingLeft
       }
-      console.log(result)
 
       return result
     }

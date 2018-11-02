@@ -12,12 +12,8 @@ export default {
       type: [String, Number]
     }
   },
-  created() {
-    console.log('row created')
-  },
+
   mounted() {
-    console.log('row mounted')
-    console.log('children', this.$children)
     this.$children.forEach(vm => {
       vm.gutter = this.gutter
     })
@@ -29,7 +25,6 @@ export default {
         result.marginLeft = `-${this.gutter / 2}px`
         result.marginRight = result.marginLeft
       }
-      console.log(result)
       return result
     }
   }
