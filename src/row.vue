@@ -14,7 +14,7 @@ export default {
     justify: {
       type: [String],
       validator(value) {
-        return ['start', 'end', 'space-around', 'space-between	'].includes(value)
+        return ['start', 'end', 'space-around', 'space-between'].includes(value)
       }
     }
   },
@@ -43,6 +43,7 @@ export default {
 <style lang="scss" scoped>
 .m-row {
   display: flex;
+  flex-wrap: wrap;
   &.justify-left {
     justify-content: flex-start;
   }
