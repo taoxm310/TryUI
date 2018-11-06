@@ -24,10 +24,7 @@ export default {
     offset: {
       type: [String, Number]
     },
-    phone: {
-      type: Object,
-      validator
-    },
+
     ipad: {
       type: Object,
       validator
@@ -53,7 +50,7 @@ export default {
   computed: {
     classList() {
       let list = []
-      let { phone, ipad, narrowPc, pc, widePc } = this
+      let { ipad, narrowPc, pc, widePc } = this
       ;['span', 'offset'].forEach(prop => {
         if (this[prop] || this[prop] === 0) {
           list.push(
@@ -65,7 +62,6 @@ export default {
       })
       return [
         ...list,
-        phone && [`m-col-phone-${phone.span}`],
         ipad && [`m-col-ipad-${ipad.span}`],
         narrowPc && [`m-col-narrow-pc-${narrowPc.span}`],
         pc && [`m-col-pc-${pc.span}`],
@@ -97,20 +93,6 @@ export default {
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
       margin-left: ($n/24) * 100%;
-    }
-  }
-  @media (max-width: 576px) {
-    $class-prefix: 'm-col-phone-';
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}#{$n} {
-        width: ($n/24) * 100%;
-      }
-    }
-    $class-prefix: 'offset-phone-';
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}#{$n} {
-        margin-left: ($n/24) * 100%;
-      }
     }
   }
 
