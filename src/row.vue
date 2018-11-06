@@ -44,10 +44,10 @@ export default {
 .m-row {
   display: flex;
   flex-wrap: wrap;
-  &.justify-left {
+  &.justify-start {
     justify-content: flex-start;
   }
-  &.justify-right {
+  &.justify-end {
     justify-content: flex-end;
   }
   &.justify-center {
