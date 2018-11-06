@@ -47,25 +47,32 @@ export default {
       gutter: 0
     }
   },
+  methods: {
+    createClasses(obj, str = '') {
+      if (!obj) {
+        return []
+      }
+      let array = []
+      if (obj.span) {
+        array.push(`m-col-${str}${obj.span}`)
+      }
+      if (obj.offset) {
+        array.push(`offset-${str}${obj.offset}`)
+      }
+      return array
+    }
+  },
   computed: {
     classList() {
       let list = []
-      let { ipad, narrowPc, pc, widePc } = this
-      ;['span', 'offset'].forEach(prop => {
-        if (this[prop] || this[prop] === 0) {
-          list.push(
-            prop !== 'span'
-              ? `m-col-${prop}-${this[prop]}`
-              : `m-col-${this[prop]}`
-          )
-        }
-      })
+      let { span, offset, ipad, narrowPc, pc, widePc } = this
+      let { createClasses } = this
       return [
-        ...list,
-        ipad && [`m-col-ipad-${ipad.span}`],
-        narrowPc && [`m-col-narrow-pc-${narrowPc.span}`],
-        pc && [`m-col-pc-${pc.span}`],
-        widePc && [`m-col-wide-pc${widePc.span}`]
+        ...createClasses({ span, offset }),
+        ...createClasses(ipad, 'ipad-'),
+        ...createClasses(narrowPc, 'narrow-pc-'),
+        ...createClasses(pc, 'pc-'),
+        ...createClasses(widePc, 'wide-pc-')
       ]
     },
     style() {
@@ -89,7 +96,7 @@ export default {
       width: ($n/24) * 100%;
     }
   }
-  $class-prefix: 'm-col-offset-';
+  $class-prefix: 'offset-';
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
       margin-left: ($n/24) * 100%;
