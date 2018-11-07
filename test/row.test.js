@@ -1,6 +1,6 @@
 const expect = chai.expect
 
-import Vue from 'vue'
+import Vue from 'vue/dist/vue.esm'
 import Row from '../src/row.vue'
 import Col from '../src/col.vue'
 
@@ -36,11 +36,11 @@ describe('Row', () => {
       </m-row>
     `
     const vm = new Vue({
-      el: 'div'
+      el: div
     })
 
     setTimeout(() => {
-      const row = document.querySelector('.m-row')
+      const row = vm.$el.querySelector('.m-row')
       expect(getComputedStyle(row).marginLeft).to.equal('-10px')
       expect(getComputedStyle(row).marginRight).to.equal('-10px')
       const cols = row.querySelectorAll('.m-col')

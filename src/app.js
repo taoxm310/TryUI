@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from 'vue/dist/vue.esm'
 import Button from './button.vue'
 import ButtonGroup from './button-group.vue'
 import Input from './input.vue'
