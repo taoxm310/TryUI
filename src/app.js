@@ -9,6 +9,8 @@ import Content from './content.vue'
 import Footer from './footer.vue'
 import Sider from './sider.vue'
 import Layout from './layout.vue'
+import Toast from './toast.vue'
+import plugin from './plugin.js'
 
 import chai from 'chai'
 import spies from 'chai-spies'
@@ -25,6 +27,8 @@ Vue.component('m-content', Content)
 Vue.component('m-footer', Footer)
 Vue.component('m-sider', Sider)
 Vue.component('m-layout', Layout)
+Vue.component('m-toast', Toast)
+Vue.use(plugin)
 
 const vm = new Vue({
   el: '#app',
@@ -38,6 +42,11 @@ const vm = new Vue({
   methods: {
     inputChange(e) {
       console.log(e)
+    },
+    showToast() {
+      this.$toast('message')
     }
   }
 })
+
+console.log(vm)
