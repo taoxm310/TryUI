@@ -13,7 +13,8 @@
     }
 
 
-    .demo {
+    .demo,
+    .test {
       background-color: #ddd;
       border: 1px solid #666;
       height: 100px
@@ -26,7 +27,16 @@
 </head>
 
 <body>
+
   <div id="app">
+    <m-layout style="height: 100px">
+      <m-sider class="test">sider</m-sider>
+      <m-layout>
+        <m-header class="test">header</m-header>
+        <m-content class="test">content</m-content>
+        <m-footer class="test">footer</m-footer>
+      </m-layout>
+    </m-layout>
     <m-row gutter="20" justify="start">
       <m-col>1</m-col>
       <m-col>2</m-col>
