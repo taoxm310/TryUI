@@ -38,7 +38,11 @@ const vm = new Vue({
     loading3: true,
     message: 'hi'
   },
-  created() {},
+  created() {
+    this.$toast('文字', {
+      enableHTML: false
+    })
+  },
   methods: {
     inputChange(e) {
       console.log(e)
