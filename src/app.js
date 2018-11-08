@@ -55,8 +55,14 @@ const vm = new Vue({
     inputChange(e) {
       console.log(e)
     },
-    showToast() {
-      this.$toast('message')
+    showToast1() {
+      this.$toast('message1')
+    },
+    showToast2() {
+      this.$toast('message2', { position: 'middle' })
+    },
+    showToast3() {
+      this.$toast('message3', { position: 'bottom' })
     }
   }
 })
