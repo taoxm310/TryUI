@@ -56,7 +56,7 @@ const vm = new Vue({
       console.log(e)
     },
     showToast1() {
-      this.$toast('message1')
+      this.$toast('message1', { autoClose: false })
     },
     showToast2() {
       this.$toast('message2', { position: 'middle' })
