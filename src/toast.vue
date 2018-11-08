@@ -50,7 +50,7 @@ export default {
     startTimer() {
       if (this.autoClose) {
         setTimeout(() => {
-          this.close
+          this.close()
         }, this.autoCloseDelay * 1000)
       }
     },
@@ -91,7 +91,7 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   }
   .close {
     padding-left: 16px;
-    flex-shrink: 0;
+    flex-shrink: 0; //initial value = 1
   }
   .line {
     height: 100%;
