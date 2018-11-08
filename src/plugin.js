@@ -9,19 +9,23 @@ export default {
       currentToast = createToast({
         Vue,
         message,
-        toastOptions
+        propsData: toastOptions,
+        onClose: () => {
+          currentToast = null
+        }
       })
     }
   }
 }
 
 // helpers
-function createToast({ Vue, message, toastOptions }) {
+function createToast({ Vue, message, propsData, onClose }) {
   let Constructor = Vue.extend(Toast)
   let toast = new Constructor({
-    propsData: toastOptions
+    propsData
   })
   toast.$slots.default = [message]
+  toast.$on('close', onClose)
   toast.$mount()
   document.body.appendChild(toast.$el)
   return toast
