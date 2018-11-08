@@ -40,7 +40,15 @@ const vm = new Vue({
   },
   created() {
     this.$toast('文字', {
-      enableHTML: false
+      position: 'middle',
+      enableHTML: false,
+      closeButton: {
+        text: '已充值',
+        callback() {
+          console.log('他说他已经充值了')
+        }
+      },
+      autoClose: false
     })
   },
   methods: {
