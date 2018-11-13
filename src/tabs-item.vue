@@ -41,7 +41,18 @@ export default {
   }
 }
 </script>
-<style lang="sass" scoped>
-
+<style lang="scss" scoped>
+.m-tabs-item {
+  flex-shrink: 0;
+  padding: 0 1em;
+  cursor: pointer;
+  border: 1px solid grey;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  &.active {
+    background-color: red;
+  }
+}
 </style>
 
