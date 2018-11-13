@@ -11,6 +11,12 @@ import Sider from './sider.vue'
 import Layout from './layout.vue'
 import Toast from './toast.vue'
 import plugin from './plugin.js'
+import Tabs from './tabs.vue'
+import TabsPane from './tabs-pane.vue'
+import TabsBody from './tabs-body.vue'
+import TabsHead from './tabs-head.vue'
+import TabsItem from './tabs-item.vue'
+import Icon from './icon.vue'
 
 import chai from 'chai'
 import spies from 'chai-spies'
@@ -28,7 +34,13 @@ Vue.component('m-footer', Footer)
 Vue.component('m-sider', Sider)
 Vue.component('m-layout', Layout)
 Vue.component('m-toast', Toast)
+Vue.component('m-icon', Icon)
 Vue.use(plugin)
+Vue.component('m-tabs', Tabs)
+Vue.component('m-tabs-pane', TabsPane)
+Vue.component('m-tabs-body', TabsBody)
+Vue.component('m-tabs-head', TabsHead)
+Vue.component('m-tabs-item', TabsItem)
 
 const vm = new Vue({
   el: '#app',
@@ -36,7 +48,8 @@ const vm = new Vue({
     loading1: false,
     loading2: true,
     loading3: true,
-    message: 'hi'
+    message: 'hi',
+    selectedTab: 'text'
   },
   created() {
     this.$toast('文字', {
