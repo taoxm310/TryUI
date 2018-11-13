@@ -76,6 +76,9 @@ const vm = new Vue({
     },
     showToast3() {
       this.$toast('message3', { position: 'bottom' })
+    },
+    onSelect(data) {
+      console.log('onSelect', data)
     }
   }
 })

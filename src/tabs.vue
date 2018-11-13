@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 export default {
   name: 'MTabs',
   props: {
@@ -20,8 +21,23 @@ export default {
       }
     }
   },
+  data() {
+    return {
+      eventBus: new Vue()
+    }
+  },
+  provide() {
+    return {
+      eventBus: this.eventBus
+    }
+  },
   created() {
-    this.$emit('update:selected', 'xxxx')
+    this.eventBus.$on('update:selected', name => {
+      this.selected = name
+    })
+  },
+  mounted() {
+    this.eventBus.$emit('update:selected', this.selected)
   }
 }
 </script>
