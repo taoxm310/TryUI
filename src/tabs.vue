@@ -31,13 +31,19 @@ export default {
       eventBus: this.eventBus
     }
   },
-  created() {
-    this.eventBus.$on('update:selected', name => {
-      this.selected = name
-    })
-  },
   mounted() {
-    this.eventBus.$emit('update:selected', this.selected)
+    this.$children.forEach(vm => {
+      if (vm.$options.name === 'MTabsHead') {
+        vm.$children.forEach(childVm => {
+          if (
+            childVm.$options.name === 'MTabsItem' &&
+            childVm.name === this.selected
+          ) {
+            this.eventBus.$emit('update:selected', this.selected, childVm)
+          }
+        })
+      }
+    })
   }
 }
 </script>

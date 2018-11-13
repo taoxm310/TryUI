@@ -36,22 +36,23 @@ export default {
   },
   methods: {
     onItemClick() {
-      this.eventBus.$emit('update:selected', this.name)
+      this.eventBus.$emit('update:selected', this.name, this)
     }
   }
 }
 </script>
 <style lang="scss" scoped>
+$blue: blue;
 .m-tabs-item {
   flex-shrink: 0;
   padding: 0 1em;
   cursor: pointer;
-  border: 1px solid grey;
   height: 100%;
   display: flex;
   align-items: center;
   &.active {
-    background-color: red;
+    color: $blue;
+    font-weight: bold;
   }
 }
 </style>
