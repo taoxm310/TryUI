@@ -1,12 +1,17 @@
 <template>
-  <div class="m-tabs-item" :class="classes" @click="onItemClick">
+  <div class="m-tabs-item" :class="classes" @click="onItemClick" :data-name="name">
     <slot></slot>
   </div>
 </template>
 <script>
 export default {
   name: 'MTabsItem',
-  inject: ['eventBus'],
+  inject: {
+    eventBus: {
+      from: 'eventBus',
+      default: null
+    }
+  },
   data() {
     return {
       active: false
@@ -31,14 +36,17 @@ export default {
     }
   },
   created() {
-    this.eventBus.$on('update:selected', name => {
-      this.active = name === this.name
-    })
+    if (this.eventBus) {
+      this.eventBus.$on('update:selected', name => {
+        this.active = name === this.name
+      })
+    }
   },
   methods: {
     onItemClick() {
       if (!this.disabled) {
-        this.eventBus.$emit('update:selected', this.name, this)
+        this.eventBus && this.eventBus.$emit('update:selected', this.name, this)
+        this.$emit('tab-click', this) // 标签被点击时候触发事件
       }
     }
   }
@@ -60,6 +68,7 @@ $disabled-text-color: #bbb;
   }
   &.disabled {
     color: $disabled-text-color;
+    cursor: not-allowed;
   }
 }
 </style>

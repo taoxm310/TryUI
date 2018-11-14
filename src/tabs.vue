@@ -32,6 +32,11 @@ export default {
     }
   },
   mounted() {
+    if (this.$children.length === 0) {
+      console &&
+        console.warn &&
+        console.warn('tabs 的子组件tabs-head 和 tabs-body 不存在')
+    }
     this.$children.forEach(vm => {
       if (vm.$options.name === 'MTabsHead') {
         vm.$children.forEach(childVm => {
