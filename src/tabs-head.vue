@@ -24,12 +24,14 @@ export default {
 <style lang="scss" scoped>
 $tabs-height: 40px;
 $blue: blue;
+$border-color: #ddd;
 .m-tabs-head {
   display: flex;
   height: $tabs-height;
   justify-content: flex-start;
   align-items: center;
   position: relative;
+  border-bottom: 1px solid $border-color;
   > .line {
     position: absolute;
     bottom: 0;
@@ -38,6 +40,7 @@ $blue: blue;
   }
   > .actions-box {
     margin-left: auto;
+    padding: 0 1em;
   }
 }
 </style>
