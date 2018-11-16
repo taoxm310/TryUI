@@ -30,6 +30,17 @@
 
   <body>
     <div id="app">
+      <m-tooltip>
+        <template slot="content">
+          <div>tooltip content</div>
+        </template>
+        <m-button>click me</m-button>
+      </m-tooltip>
+      <m-tooltip>
+        <template slot="content">
+          <m-button>click me</m-button>
+        </template>
+      </m-tooltip>
       <m-tabs :selected.sync="selectedTab">
         <m-tabs-head>
           <template slot="actions">
