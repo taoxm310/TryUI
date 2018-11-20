@@ -25,6 +25,12 @@
       .m-sider {
         width: 150px;
       }
+
+      #app {
+        padding-top: 100px;
+        padding-left: 100px;
+        border: 1px solid grey;
+      }
     </style>
   </head>
 
@@ -37,9 +43,9 @@
         <m-button>click me</m-button>
       </m-tooltip>
       <m-tooltip>
-        <template slot="content">
-          <m-button>click me</m-button>
+        <template slot="content">tooltip content1
         </template>
+        <m-button>click me1</m-button>
       </m-tooltip>
       <m-tabs :selected.sync="selectedTab">
         <m-tabs-head>
