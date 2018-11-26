@@ -51,13 +51,15 @@
         <m-button>click me1</m-button>
       </m-tooltip>
       <m-tooltip position="left">
-          <template slot="content">tooltip content1 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae porro iste facere saepe eos. Ex itaque, cumque quos harum sunt, nesciunt non, dolores laudantium veritatis ullam eaque labore soluta modi!
+          <template slot="content" slot-scope="{close}">
+            <a href="http://baidu.com">baidu</a>
+            <m-button @click="close">close</m-button>
           </template>
           <m-button>click me1</m-button>
         </m-tooltip>
         <m-tooltip position="right">
             <template slot="content"
-              >tooltip content1
+              ><div><a href="http://baidu.com">baidu</a></div>
             </template>
             <m-button>click me1</m-button>
           </m-tooltip>
