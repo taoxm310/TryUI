@@ -18,6 +18,8 @@ import TabsHead from './tabs-head.vue'
 import TabsItem from './tabs-item.vue'
 import Icon from './icon.vue'
 import ToolTip from './tooltip.vue'
+import Collapse from './collapse.vue'
+import CollapsePanel from './collapse-panel.vue'
 
 import chai from 'chai'
 import spies from 'chai-spies'
@@ -42,7 +44,9 @@ Vue.component('m-tabs-pane', TabsPane)
 Vue.component('m-tabs-body', TabsBody)
 Vue.component('m-tabs-head', TabsHead)
 Vue.component('m-tabs-item', TabsItem)
-Vue.component('m-tooltip',ToolTip)
+Vue.component('m-tooltip', ToolTip)
+Vue.component('m-collapse', Collapse)
+Vue.component('m-collapse-panel', CollapsePanel)
 
 const vm = new Vue({
   el: '#app',
