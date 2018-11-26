@@ -1,6 +1,11 @@
 <template>
   <div class="m-tooltip" @click="onClick" ref="tooltip">
-    <div class="content-wrapper" v-if="visible" ref="contentWrapper">
+    <div
+      class="content-wrapper"
+      v-if="visible"
+      ref="contentWrapper"
+      :class="{[`position-${position}`]:true}"
+    >
       <slot name="content"></slot>
     </div>
     <span ref="triggerWrapper" style="display:inline-block">
@@ -11,6 +16,15 @@
 <script>
 export default {
   name: 'MTooltip',
+  props: {
+    position: {
+      type: String,
+      default: 'top',
+      validator(value) {
+        return ['top', 'right', 'left', 'bottom'].indexOf(value) !== -1
+      }
+    }
+  },
   data() {
     return {
       visible: false
@@ -18,15 +32,32 @@ export default {
   },
   methods: {
     placeContent() {
-      document.body.appendChild(this.$refs.contentWrapper)
+      const { contentWrapper, triggerWrapper } = this.$refs
+      document.body.appendChild(contentWrapper)
       let {
         width,
         top,
         left,
         height
       } = this.$refs.triggerWrapper.getBoundingClientRect()
-      this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
-      this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
+      const { height: height2 } = contentWrapper.getBoundingClientRect()
+      let positions = {
+        top: { top: top + window.scrollY, left: left + window.scrollX },
+        bottom: {
+          top: top + height2 + window.scrollY,
+          left: left + window.scrollX
+        },
+        left: {
+          top: top + window.scrollY + (height - height2) / 2,
+          left: left + window.scrollX
+        },
+        right: {
+          top: top + window.scrollY + (height - height2) / 2,
+          left: left + window.scrollX + width
+        }
+      }
+      contentWrapper.style.left = positions[this.position].left + 'px'
+      contentWrapper.style.top = positions[this.position].top + 'px'
     },
     open() {
       ;(this.visible = true),
@@ -83,8 +114,6 @@ $border-radius: 4px;
   border-radius: $border-radius;
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
   background-color: white;
-  transform: translateY(-100%);
-  margin-top: -10px;
   padding: 0.5em 1em;
   max-width: 20em;
   word-break: break-all;
@@ -96,15 +125,74 @@ $border-radius: 4px;
     width: 0;
     height: 0;
     position: absolute;
-    left: 10px;
   }
-  &:before {
-    border-top-color: black;
-    top: 100%;
+
+  &.position-top {
+    transform: translateY(-100%);
+    margin-top: -10px;
+    &::before,
+    &::after {
+      left: 10px;
+    }
+    &::before {
+      border-top-color: black;
+      top: 100%;
+    }
+
+    &:after {
+      border-top-color: white;
+      top: calc(100% - 1px);
+    }
   }
-  &:after {
-    border-top-color: white;
-    top: calc(100% - 1px);
+  &.position-bottom {
+    margin-top: 10px;
+    &::before,
+    &::after {
+      left: 10px;
+      border-top: none;
+    }
+    &::before {
+      border-bottom-color: black;
+      bottom: 100%;
+    }
+
+    &:after {
+      border-bottom-color: white;
+      bottom: calc(100% - 1px);
+    }
+  }
+  &.position-left {
+    transform: translateX(-100%);
+    margin-left: -10px;
+    &::before,
+    &::after {
+      transform: translateY(-50%);
+      top: 50%;
+    }
+    &:before {
+      border-left-color: black;
+      left: 100%;
+    }
+    &:after {
+      border-left-color: white;
+      left: calc(100% - 1px);
+    }
+  }
+  &.position-right {
+    margin-left: 10px;
+    &::before,
+    &::after {
+      transform: translateY(-50%);
+      top: 50%;
+    }
+    &:before {
+      border-right-color: black;
+      right: 100%;
+    }
+    &:after {
+      border-right-color: white;
+      right: calc(100% - 1px);
+    }
   }
 }
 </style>
