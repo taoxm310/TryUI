@@ -12,12 +12,21 @@ export default {
     single: {
       type: Boolean,
       default: true
+    },
+    selected: {
+      type: String
     }
   },
   data() {
     return {
       eventBus: new Vue()
     }
+  },
+  mounted() {
+    this.eventBus.$emit('update:selected', this.selected)
+    this.eventBus.$on('update:selected', name => {
+      this.$emit('update:selected', name)
+    })
   },
   provide() {
     if (this.single) {
