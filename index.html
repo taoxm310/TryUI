@@ -36,14 +36,17 @@
 
   <body>
     <div id="app">
+      <div style="overflow: hidden; border: 1px solid green;padding: 5px;">
+        <m-tooltip>
+          <template slot="content">
+            <div>tooltip content</div>
+          </template>
+          <m-button>click me</m-button>
+        </m-tooltip>
+      </div>
       <m-tooltip>
-        <template slot="content">
-          <div>tooltip content</div>
-        </template>
-        <m-button>click me</m-button>
-      </m-tooltip>
-      <m-tooltip>
-        <template slot="content">tooltip content1
+        <template slot="content"
+          >tooltip content1
         </template>
         <m-button>click me1</m-button>
       </m-tooltip>

@@ -22,6 +22,7 @@ export default {
       if (this.visible === true) {
         this.$nextTick(() => {
           document.body.appendChild(this.$refs.contentWrapper)
+          // 为了防止tooltip的父元素有overflow hidden 把气泡覆盖，所以将气泡 append 在 body 上
           let { width, top,left, right} = this.$refs.triggerWrapper.getBoundingClientRect()
           this.$refs.contentWrapper.style.left = `${left + window.scrollX}px`
           this.$refs.contentWrapper.style.top = `${top + window.scrollY}px`
