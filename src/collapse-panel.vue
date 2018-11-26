@@ -1,7 +1,7 @@
 <template>
   <div class="m-collapse-panel">
-    <div class="title" @click="toggle">{{title}}</div>
-    <div class="content" v-if="open">
+    <div class="title" @click="toggle" :data-name="name">{{title}}</div>
+    <div class="content" v-if="open" ref="content">
       <slot></slot>
     </div>
   </div>
@@ -58,6 +58,7 @@ $border-radius: 4px;
     display: flex;
     align-items: center;
     padding: 0 8px;
+    background-color: lighten($grey, 8%);
   }
   &:first-child {
     .title {
