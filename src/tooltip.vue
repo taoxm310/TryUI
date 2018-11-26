@@ -1,5 +1,5 @@
 <template>
-  <div class="m-tooltip" @click="onClick" ref="tooltip">
+  <div class="m-tooltip" ref="tooltip">
     <div
       class="content-wrapper"
       v-if="visible"
@@ -23,11 +23,34 @@ export default {
       validator(value) {
         return ['top', 'right', 'left', 'bottom'].indexOf(value) !== -1
       }
+    },
+    trigger: {
+      type: String,
+      default: 'click',
+      validator(value) {
+        return ['click', 'hover'].indexOf(value) !== -1
+      }
     }
   },
   data() {
     return {
       visible: false
+    }
+  },
+  computed: {
+    openEvent() {
+      if (this.trigger === 'click') {
+        return 'click'
+      } else {
+        return 'mouseenter'
+      }
+    },
+    closeEvent() {
+      if (this.trigger === 'click'){
+        return 'click'
+      } else {
+        return 'mouseleave'
+      }
     }
   },
   methods: {
@@ -72,9 +95,9 @@ export default {
     },
     onClickDocument(e) {
       if (
-        this.$refs.popover &&
-        (this.$refs.popover === e.target ||
-          this.$refs.popover.contains(e.target))
+        this.$refs.tooltip &&
+        (this.$refs.tooltip === e.target ||
+          this.$refs.tooltip.contains(e.target))
       ) {
         return
       }
@@ -95,6 +118,22 @@ export default {
           this.open()
         }
       }
+    }
+  },
+  mounted() {
+    if (this.trigger === 'click') {
+      this.$refs.tooltip.addEventListener('click', this.onClick)
+    } else {
+      this.$refs.tooltip.addEventListener('mouseenter', this.open)
+      this.$refs.tooltip.addEventListener('mouseleave', this.close)
+    }
+  },
+  destroyed() {
+    if (this.trigger === 'click') {
+      this.$refs.tooltip.removeEventListener('click', this.onClick)
+    } else {
+      this.$refs.tooltip.removeEventListener('mouseenter', this.open)
+      this.$refs.tooltip.removeEventListener('mouseleave', this.close)
     }
   }
 }
