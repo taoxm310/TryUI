@@ -1,5 +1,5 @@
 <template>
-  <div class="m-tooltip" @click="show">
+  <div class="m-tooltip" @click="onClick" ref="tooltip">
     <div class="content-wrapper" v-if="visible" ref="contentWrapper">
       <slot name="content"></slot>
     </div>
@@ -17,21 +17,36 @@ export default {
     }
   },
   methods:{
-    show (){
-      this.visible = !this.visible
-      if (this.visible === true) {
-        this.$nextTick(() => {
-          document.body.appendChild(this.$refs.contentWrapper)
-          // 为了防止tooltip的父元素有overflow hidden 把气泡覆盖，所以将气泡 append 在 body 上
-          let { width, top,left, right} = this.$refs.triggerWrapper.getBoundingClientRect()
-          this.$refs.contentWrapper.style.left = `${left + window.scrollX}px`
-          this.$refs.contentWrapper.style.top = `${top + window.scrollY}px`
-          let eventHandler = () => {
-            this.visible = false
-            document.removeEventListener('click',eventHandler)
-          }
-          document.addEventListener('click',eventHandler)
-        })
+    placeContent(){
+      document.body.appendChild(this.$refs.contentWrapper)
+      let {width, top,left,height} = this.$refs.triggerWrapper.getBoundingClientRect()
+      this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
+      this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
+    },
+    open(){
+      this.visible = true,
+      this.$nextTick(() => {
+        this.placeContent()
+        document.addEventListener('click',this.onClickDocument)
+      })
+    },
+    close() {
+      this.visible = false,
+      document.removeEventListener('click', this.onClickDocument)
+    },
+    onClickDocument(e){
+      if (this.$refs.tooltip && this.$refs.tooltip === e.target || this.$refs.tooltip.contains(e.target) ) {
+        return
+      }
+      this.close()
+    },
+    onClick(event){
+      if (this.$refs.triggerWrapper.contains(event.target)) {
+        if (this.visible === true) {
+          this.close()
+        } else {
+          this.open()
+        }
       }
     }
   }
