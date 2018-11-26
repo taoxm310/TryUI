@@ -4,8 +4,28 @@
   </div>
 </template>
 <script>
+import Vue from 'vue'
 export default {
-  name: 'MCollpase'
+  name: 'MCollpase',
+  props: {
+    //是否只显示一个面板
+    single: {
+      type: Boolean,
+      default: true
+    }
+  },
+  data() {
+    return {
+      eventBus: new Vue()
+    }
+  },
+  provide() {
+    if (this.single) {
+      return {
+        eventBus: this.eventBus
+      }
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
