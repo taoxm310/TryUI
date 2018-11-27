@@ -56,7 +56,7 @@ const vm = new Vue({
     loading3: true,
     message: 'hi',
     selectedTab: 'text',
-    selectedPanel: ['1', '2']
+    selectedPanel: ['1']
   },
   created() {
     this.$toast('文字', {
