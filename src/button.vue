@@ -8,12 +8,12 @@
   </button>
 </template>
 <script>
-import Icon from './icon'
+import Icon from "./icon";
 
 export default {
-  name: 'm-button',
+  name: "m-button",
   components: {
-    'm-icon': Icon
+    "m-icon": Icon
   },
   props: {
     icon: {},
@@ -23,15 +23,16 @@ export default {
     },
     iconPosition: {
       type: String,
-      default: 'left',
+      default: "left",
       validator: value => {
-        return value === 'left' || value === 'right'
+        return value === "left" || value === "right";
       }
     } //iconPosition 在文字左边还是右边
   }
-}
+};
 </script>
 <style lang="scss" scoped>
+@import url("./global.scss");
 @keyframes spin {
   0% {
     transform: rotate(0deg);
