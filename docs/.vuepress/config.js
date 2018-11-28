@@ -7,7 +7,14 @@ module.exports = {
       {
         title: '组件',
         collapsable: false,
-        children: ['/components/button']
+        children: [
+          '/components/button',
+          '/components/input',
+          '/components/layout',
+          '/components/grid',
+          '/components/toast',
+          '/components/tabs'
+        ]
       }
     ]
   }
