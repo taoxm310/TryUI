@@ -22,7 +22,7 @@ title: Button
     <m-button icon="download" loading>按钮</m-button>
 </template>
 <script>
-import MButton from 'MButton'
+import MButton from 'MUI'
 export default {
 	components: {
 		MButton
