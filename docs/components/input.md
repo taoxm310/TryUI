@@ -8,7 +8,9 @@ title: Input
 
 ### 基本使用
 
-<!-- <input-demo/> -->
+<ClientOnly>
+<input-demo/>
+</ClientOnly>
 
 ### Api
 

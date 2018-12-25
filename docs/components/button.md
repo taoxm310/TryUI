@@ -10,7 +10,9 @@ title: Button
 
 ### 基本使用
 
-<!-- <button-demo/> -->
+<ClientOnly>
+<button-demo/>
+</ClientOnly>
 
 ```js
 <template>
