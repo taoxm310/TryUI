@@ -32,7 +32,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import url("./global.scss");
+@import '_var.scss';
 @keyframes spin {
   0% {
     transform: rotate(0deg);
