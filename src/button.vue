@@ -44,20 +44,20 @@ export default {
 
 .m-button {
   vertical-align: middle;
-  height: var(--button-height);
+  height: $button-height;
   padding: 0 1em;
   font: inherit;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
-  background-color: var(--button-bg);
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+  background-color: $button-bg;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   &:hover {
-    border-color: var(--border-color-hover);
+    border-color: $border-color-hover;
   }
   &:active {
-    background-color: var(--button-active-bg);
+    background-color: $button-active-bg;
   }
   &:focus {
     outline: none;
