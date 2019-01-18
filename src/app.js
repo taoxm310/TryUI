@@ -20,6 +20,8 @@ import Icon from './icon.vue'
 import ToolTip from './tooltip.vue'
 import Collapse from './collapse.vue'
 import CollapsePanel from './collapse-panel.vue'
+import Cascader from './cascader.vue'
+import CascaderItem from './cascader-item.vue'
 
 import chai from 'chai'
 import spies from 'chai-spies'
@@ -47,6 +49,8 @@ Vue.component('m-tabs-item', TabsItem)
 Vue.component('m-tooltip', ToolTip)
 Vue.component('m-collapse', Collapse)
 Vue.component('m-collapse-panel', CollapsePanel)
+Vue.component('m-cascader', Cascader)
+Vue.component('m-cascader-item', CascaderItem)
 
 const vm = new Vue({
   el: '#app',
@@ -56,7 +60,49 @@ const vm = new Vue({
     loading3: true,
     message: 'hi',
     selectedTab: 'text',
-    selectedPanel: ['1']
+    selectedPanel: ['1'],
+    source: [{
+      name: '浙江',
+      children: [
+        {
+          name: '杭州',
+          children: [
+            {name: '上城'},
+            {name: '下城'},
+            {name: '江干'},
+          ]
+        },
+        {
+          name: '嘉兴',
+          children: [
+            {name: '南湖'},
+            {name: '秀洲'},
+            {name: '嘉善'},
+          ]
+        },
+      ]
+    }, {
+      name: '福建',
+      children: [
+        {
+          name: '福州',
+          children: [
+            {name: '鼓楼'},
+            {name: '台江'},
+            {name: '仓山'},
+          ]
+        }, {
+          name: '安徽',
+          children: [{
+            name: '合肥',
+            children: [{
+              name: '瑶海'
+            }, {
+              name: '庐阳'
+            }]
+          }]
+        }]
+      }]
   },
   created() {
     this.$toast('文字', {
